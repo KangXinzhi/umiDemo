@@ -2,21 +2,19 @@
 
 # dependencies
 /node_modules
+/npm-debug.log*
+/yarn-error.log
+/yarn.lock
+/package-lock.json
 
 # production
 /dist
 
 # misc
 .DS_Store
-npm-debug.log*
 
-# site
-/build
-src/config.json
-consul.config.json
-config.local.js
-
-.umi
-.umi-production
-.eslintcache
-.history/
+# umi
+/src/.umi
+/src/.umi-production
+/src/.umi-test
+/.env.local
