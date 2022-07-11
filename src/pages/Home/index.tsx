@@ -1,17 +1,13 @@
 import Header from '@/component/Header';
 import { useFullscreen } from 'ahooks';
-import { useRef } from 'react';
-import { Link, history } from 'umi';
+import { history } from 'umi';
 
 export default function IndexPage() {
-  const ref = useRef(null);
-  const [isFullscreen, { enterFullscreen, exitFullscreen, toggleFullscreen }] =
-    useFullscreen(ref);
+  const root = document.getElementById('root');
+  const [, { enterFullscreen, exitFullscreen }] = useFullscreen(root);
+
   return (
-    <div ref={ref} style={{ background: 'white' }}>
-      <div style={{ marginBottom: 16 }}>
-        {isFullscreen ? 'Fullscreen' : 'Not fullscreen'}
-      </div>
+    <div style={{ background: 'white' }}>
       <div>
         <button type="button" onClick={enterFullscreen}>
           enterFullscreen
@@ -23,18 +19,22 @@ export default function IndexPage() {
         >
           exitFullscreen
         </button>
-        <button type="button" onClick={toggleFullscreen}>
-          toggleFullscreen
-        </button>
       </div>
 
       <h1>Home</h1>
       <button
         onClick={() => {
-          history.push('about');
+          history.push('/home/about');
         }}
       >
         Gotoabout
+      </button>
+      <button
+        onClick={() => {
+          history.push('/home/report');
+        }}
+      >
+        GotoReport
       </button>
       {/* <Link to="/about">Go to about</Link> */}
     </div>
